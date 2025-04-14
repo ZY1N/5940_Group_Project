@@ -1,5 +1,6 @@
 package edu.upenn.cit594;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        if(args.length > 4){
+        if(args.length > 4 || args.length < 1){
             System.out.println("Enter Format:--population=pop.csv --covid=cov.csv --properties=props.csv --log=log.txt");
             return;
         }
@@ -111,6 +112,13 @@ public class Main {
                 seen.add(key);
             }
 
+            //now check to see if it can be read
+            //The logger cannot be correctly initialized
+            //The specified input files do not exist or cannot be opened for reading (e.g., because of file
+            //permissions)
+            File file = new File(value);
+
+            //keep this to use later
             arguments.put(key, value);
         }
 
@@ -122,11 +130,6 @@ public class Main {
 
         //The specified input files do not exist or cannot be opened for reading (e.g., because of file
         //permissions)
-
-
-
-
-        System.out.println("hello world");
 
 
     }
